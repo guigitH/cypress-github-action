@@ -1,4 +1,4 @@
-context('Network Requests', () => {
+context('Location', () => {
   beforeEach(() => {
     cy.visit('/commands/location')
   })
