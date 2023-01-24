@@ -1,6 +1,8 @@
+import {URL} from "../constant/url";
+
 context('Actions', () => {
   beforeEach(() => {
-    cy.visit('/commands/actions')
+    cy.visit(`${URL.ACTION}`)
   })
 
   it('.scrollIntoView() - scroll an element into view', () => {

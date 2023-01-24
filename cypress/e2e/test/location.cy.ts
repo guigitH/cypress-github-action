@@ -1,11 +1,13 @@
+import {URL} from "../constant/url";
+
 context('Location', () => {
   beforeEach(() => {
-    cy.visit('/commands/location')
+    cy.visit(`${URL.LOCATION}`)
   })
 
   it('cy.location() - get window.location', () => {
     cy.location().should((location) => {
-      expect(location.href).to.eq('https://example.cypress.io/commands/location')
+      expect(location.href).to.eq(`${URL.BASE}${URL.LOCATION}`)
     })
   })
 })

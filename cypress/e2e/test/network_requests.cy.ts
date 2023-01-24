@@ -1,6 +1,8 @@
+import {URL} from "../constant/url";
+
 context('Network Requests', () => {
   beforeEach(() => {
-    cy.visit('/commands/network-requests')
+    cy.visit(`${URL.NETWORK}`)
   })
 
   it('cy.request() - make an XHR request', () => {
