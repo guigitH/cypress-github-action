@@ -4,9 +4,9 @@ const cypress = require('cypress');
 
   try {
     const run = await cypress.run({
-      spec: "cypress/e2e/test/*.cy.js",
+      spec: "cypress/e2e/test/*.cy.ts",
       browser: 'chrome',
-      configFile: 'cypress/cypress.config.js',
+      configFile: 'cypress/cypress.config.ts',
       config: {
         baseUrl: 'https://example.cypress.io',
         video: false,
@@ -18,6 +18,6 @@ const cypress = require('cypress');
       console.error('Could not execute tests: ' + run.result.message)
     }
   } catch (error) {
-    console.error(err.message)
+    console.error(error.message)
   }
 })()
