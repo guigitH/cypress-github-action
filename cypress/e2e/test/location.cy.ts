@@ -1,13 +1,13 @@
 import {URL} from "../constant/url";
+import BasePage from "../page/BasePage";
 
 context('Location', () => {
   beforeEach(() => {
     cy.visit(`${URL.LOCATION}`)
   })
 
-  it('cy.location() - get window.location', () => {
-    cy.location().should((location) => {
-      expect(location.href).to.eq(`${URL.BASE}${URL.LOCATION}`)
-    })
+  it('User is on the command location page', () => {
+    const cypress = new BasePage();
+    cypress.confirmLocation(`${URL.BASE}${URL.LOCATION}`);
   })
 })
