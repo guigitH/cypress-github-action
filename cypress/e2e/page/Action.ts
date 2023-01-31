@@ -1,6 +1,6 @@
 import BasePage from "./BasePage";
 
-interface Button {
+type Button = {
     view: "horizontal" | "vertical" | "both",
 }
 
