@@ -26,6 +26,7 @@ jobs:
   cypress-test:
     needs: setup
     runs-on: ubuntu-latest
+    steps:
       - name: Run all cypress test
         run: npm run cy:run
 
