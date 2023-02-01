@@ -14,10 +14,16 @@ const cypress = require('cypress');
       env: {
       },
     })
+    if(run.totalFailed){
+      console.error(run.totalFailed + ' tests failed')
+      process.exit(1) 
+    }
     if (run.result.failures) {
       console.error('Could not execute tests: ' + run.result.message)
+      process.exit(1)
     }
   } catch (error) {
     console.error(error.message)
+    process.exit(1)
   }
 })()
