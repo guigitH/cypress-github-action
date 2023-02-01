@@ -1,10 +1,13 @@
 const cypress = require('cypress');
 
+
 (async function testRunner() {
+
+  const specFile = process.argv[2] || "*"
 
   try {
     const run = await cypress.run({
-      spec: "cypress/e2e/test/*.cy.ts",
+      spec: `cypress/e2e/test/${specFile}.cy.ts`,
       browser: 'chrome',
       configFile: 'cypress/cypress.config.ts',
       config: {
