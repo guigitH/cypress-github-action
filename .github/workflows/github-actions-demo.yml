@@ -18,15 +18,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci        
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: all
-          path: .
         
   cypress-test:
     needs: setup
@@ -34,12 +29,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: .
-
+        
       - name: Run all cypress test
         run: npm run cy:run
 
