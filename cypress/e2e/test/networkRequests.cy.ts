@@ -8,6 +8,6 @@ context('Network Requests', () => {
 
   it('User gets successful http response from cypress jsonplaceholder page', () => {
     const cypress = new BasePage();
-    cypress.validateHttpRequest(URL.JSONPLACEHOLDER, 300);
+    cypress.validateHttpRequest(URL.JSONPLACEHOLDER, 200);
   })
 })
