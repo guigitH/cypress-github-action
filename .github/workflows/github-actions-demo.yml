@@ -5,7 +5,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
 jobs:
-  Cypress-test:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -18,11 +18,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci        
-      
+        
+  cypress-test:
+    needs: setup
+    runs-on: ubuntu-latest
       - name: Run all cypress test
         run: npm run cy:run
-        
+
       - run: echo "🍏 This job's status is ${{ job.status }}."
