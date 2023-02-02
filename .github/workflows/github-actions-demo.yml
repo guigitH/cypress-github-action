@@ -14,7 +14,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js 16.x and install dependencies
+      - name: Set up Node.js 16.x
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
