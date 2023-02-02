@@ -18,7 +18,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
-          cache: 'npm'    
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: node_modules
+          path: node_modules
         
   cypress-test-actions:
     needs: setup
@@ -27,8 +36,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm ci        
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
         
       - name: Run all cypress test
         run: npm run cy:run actions
@@ -42,8 +51,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm ci            
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3     
         
       - name: Run all cypress test
         run: npm run cy:run location
@@ -57,8 +66,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm ci            
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3           
         
       - name: Run all cypress test
         run: npm run cy:run networkRequests
