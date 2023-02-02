@@ -1,0 +1,66 @@
+name: GitHub Actions Demo with Cypress
+
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+on: [push]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          cache: 'npm'    
+        
+  cypress-test-actions:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm ci        
+        
+      - name: Run all cypress test
+        run: npm run cy:run actions
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  cypress-test-location:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm ci            
+        
+      - name: Run all cypress test
+        run: npm run cy:run location
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+      
+  cypress-test-networkRequests:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm ci            
+        
+      - name: Run all cypress test
+        run: npm run cy:run networkRequests
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."      
